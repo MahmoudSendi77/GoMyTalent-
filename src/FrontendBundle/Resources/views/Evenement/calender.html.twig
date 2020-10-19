@@ -1,0 +1,61 @@
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />
+{% endblock %}
+{% block body %}
+
+    {% include '@FullCalendar/Calendar/calendar.html.twig' %}
+
+    <div id="calendar-holder">
+
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            $('#calendar-holder').fullCalendar({
+                header: {
+                    left: 'prev, next',
+                    center: 'title',
+                    right: 'month, agendaWeek, agendaDay'
+                },
+
+                eventSources: [
+                    {
+                        events: function (start, end, timezone, callback) {
+                            $.ajax({
+                                url: '/full-calendar/load-json',
+                                type: 'GET',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }, success: function (response) {
+                                    console.log(response)
+                                    var events = [];
+                                    $(response).each(function () {
+
+                                        events.push({
+                                            id: $(this).attr('id'),
+                                            title: $(this).attr('title'),
+                                            start: $(this).attr('start'),
+                                            end: $(this).attr('end'),
+                                            color: $(this).attr('color'),
+
+                                        });
+                                    });
+                                    callback(events);
+                                }
+                            });
+                        }
+
+
+                    }
+                ]
+            });})
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+{% endblock %}

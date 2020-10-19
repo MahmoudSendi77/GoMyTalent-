@@ -1,0 +1,81 @@
+{% extends 'backend/base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row center-block" >
+            <div class="col-md-11" style="margin: 0 65px;">
+                <center>
+                    <h1>Liste des Publications</h1>
+                    {# total items count #}
+                   {# <div class="count">
+                        {{ pagination.getTotalItemCount }}
+                    </div>#}
+                    <table class="table table-bordered table-hover" >
+                        <tr>
+                            {# sorting of properties based on query components #}
+                           {# <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>#}
+                            <th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Title', 'a.title') }}
+                            </th>
+                            <th{% if pagination.isSorted(['a.date', 'a.time']) %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Category', ['a.date', 'a.time']) }}
+                            </th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Etat</th>
+
+                            <th>Action</th>
+                            <th>Action</th>
+                        </tr>
+
+                        {# table body #}
+                        {% for evenement in pagination %}
+                            <tr {% if loop.index is odd %}class="color"{% endif %}>
+
+                                <td>{{ evenement.titre }}</td>
+                                <td>{{ evenement.categorie }}</td>
+                                {% if evenement.contenu=='image' %}
+                                <td><img style="max-height: 50px;max-width: 100px" src="{{ asset('uploads/images/events/'~ evenement.file) }}"/></td>
+                                {% else %}
+                                    <td>
+                                    <video style="max-height: 50px;max-width: 100px" src="{{ asset('uploads/images/events/'~ evenement.file) }}" controls="controls" ></video>
+                                    </td>
+                                    {% endif %}
+                                <td>{{ evenement.description }}</td>
+                                {% if evenement.isValid==1 %}
+                                <td>Validé</td>
+                        {% else %}
+                                <td>Non Validé</td>
+                                {% endif %}
+
+                               {# <td>{{ evenement.nombreparticipants}}</td>#}
+
+                                {#                                    <td><a href="{{path('evenement_supprimer',{'id':evenement.id}) }}">Supprimer</a></td>#}
+                                <td><a href="{{path('publication_delete_admin',{'id':evenement.id})}}">Supprimer</a> </td>
+                                <td><a href="{{path('publication_valider_admin',{'id':evenement.id})}}">Valider</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {# display navigation #}
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </center>
+            </div>
+        </div>
+    </div>
+{% endblock %}

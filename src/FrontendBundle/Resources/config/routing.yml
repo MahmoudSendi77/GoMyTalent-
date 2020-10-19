@@ -1,0 +1,58 @@
+index:
+    path:     /index
+    defaults: { _controller: FrontendBundle:Default:index }
+aboutpage:
+    path:     /about
+    defaults: { _controller: FrontendBundle:Default:about }
+contactpage:
+    path:     /contact
+    defaults: { _controller: FrontendBundle:Default:contact }
+evenement_list_categorie:
+    path:     /evenement/show/{categorie}
+    defaults: { _controller: FrontendBundle:Evenement:showBycategory }
+evenement_show_one:
+    path:     /evenement/show-one/{id}
+    defaults: { _controller: FrontendBundle:Evenement:showoneEvenement }
+publication_add:
+    path:     /acess/candidat/publication/add/{eventId}
+    defaults: { _controller: FrontendBundle:Publication:create }
+publication_affiche:
+    path:     /acess/candidat/publication/affiche
+    defaults: { _controller: FrontendBundle:Publication:affiche }
+participation_add:
+    path:     /acess/candidat/participation/add/{eventId}
+    defaults: { _controller: FrontendBundle:Participation:create }
+showenementcalender:
+    path:     /evenement/show-calender
+    defaults: { _controller: FrontendBundle:Evenement:showoneEvenementCalender }
+event_json:
+    path:     /full-calendar/load-json
+    defaults: { _controller: FrontendBundle:Evenement:getEventsJson }
+publication_search_ajax:
+    path:     /publication/search
+    defaults: { _controller: FrontendBundle:Publication:search }
+publication_affiche_by_event:
+    path:     /acess/candidat/publication/affiche/{idEvent}
+    defaults: { _controller: FrontendBundle:Publication:afficheByevent }
+participation_list:
+    path:     /acess/candidat/Participation/afficheparticipation
+    defaults: { _controller: FrontendBundle:Participation:afficheParticipationByEventUser }
+
+participation_supprimer:
+    path:     /acess/candidat/Participation/delete/{id}
+    defaults: { _controller: FrontendBundle:Participation:participationdelete }
+participation_afficheCard:
+    path:     /acess/candidat/Participation/afficheparticipationcarddd/{id}
+    defaults: { _controller: FrontendBundle:Participation:afficheParticipationcard}
+showone_publication:
+    path:     /acess/candidat/publication/afficheOnePublication/{id}
+    defaults: { _controller: FrontendBundle:Publication:afficheOnePublication}
+showone_mes_publication:
+    path:     /acess/candidat/publication/afficheMesPublication
+    defaults: { _controller: FrontendBundle:Publication:afficheMesPublication}
+delete_mes_publication:
+    path:     /acess/candidat/publication/deletedeMespub/{id}
+    defaults: { _controller: FrontendBundle:Publication:deletePublication}
+modifier_mes_publication:
+    path:     /acess/candidat/publication/modifierMespub/{id}
+    defaults: { _controller: FrontendBundle:Publication:modifierMaPublication}

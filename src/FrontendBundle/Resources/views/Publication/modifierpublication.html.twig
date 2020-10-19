@@ -1,0 +1,96 @@
+{% extends 'frontend/base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+<br>
+    {% if error is defined %}
+        <div class="row justify-content-center" >
+            <div class="col-md-10">
+                     <div class="alert alert-danger" role="alert">
+                        {{ error}}
+                    </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="card">
+    <div class="card-header">
+        <br>
+        <br>
+        <h2><strong> Ajouter un publication </strong> </h2>
+
+    </div>
+    <br>
+    <br>
+    <div class="card-body">
+    {{ form_start(form) }}
+    <div class="row">
+
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="inputname" class="control-label col-form-label">Titre</label>
+                {{ form_widget(form.titre,{'attr':{'class':'form-control'}} ) }}
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="inputname" class="control-label col-form-label">Description</label>
+                {{ form_widget(form.description,{'attr':{'class':'form-control'}} ) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="inputname" class="control-label col-form-label">Categorie</label>
+                {{ form_widget(form.categorie,{'attr':{'class':'form-control'}} ) }}
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="inputname" class="control-label col-form-label">Contenu</label>
+                {{ form_widget(form.contenu,{'attr':{'class':'form-control'}} ) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="inputname" class="control-label col-form-label">fileUpload</label>
+                {{ form_widget(form.fileUpload,{'attr':{'class':'form-control'}} ) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10"></div>
+        <br>
+        <br>
+        <div class="col-2">
+            <div class="buttons">
+                <div class="pull-right">
+                    <input type="submit" value="Valider" class="btn btn-info" />
+                    <input type="reset" value="Annuler" class="btn btn-secondary" />
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

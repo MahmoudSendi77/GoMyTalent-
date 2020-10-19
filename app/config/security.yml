@@ -1,0 +1,37 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_CANDIDAT:        ROLE_CANDIDAT
+        ROLE_SPECTATEUR:        ROLE_SPECTATEUR
+        ADMIN:        ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        main:
+            pattern: ^/
+            user_checker: security.user_checker
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                use_forward: false
+                always_use_default_target_path: false
+                default_target_path: /index
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      #  - { path: ^/acess/candidat, role: ROLE_CANDIDAT }
+        - { path: ^/acess/jury, role: ROLE_JYURY }
+        - { path: ^/acess/spectateur, role: ROLE_SPECTATEUR }
+        - { path: ^/acess/sponsor, role: ROLE_SPONSOR }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/acess/admin, role: ROLE_ADMIN }

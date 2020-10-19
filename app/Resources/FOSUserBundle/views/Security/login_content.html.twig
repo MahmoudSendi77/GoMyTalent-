@@ -1,0 +1,96 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<div class="container">
+
+<center>
+    <div class="row">
+        <div class="col-md-4 ">
+        </div>
+        <div class="col-md-4 ">
+            <h3 class="agileinfo_sign">
+              <div style="color: #2fdab8">  Connectez-vous <span style="color: #0c0c0c">maintenant</span></div>  </h3>
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+
+
+                <div class="styled-input agile-styled-input-top">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                    <label for="username">Email</label>
+
+                    <span></span>
+                </div>
+                <div class="styled-input">
+                    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+
+                    <label for="password">Password</label>
+                    <span></span>
+                </div>
+
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label for="remember_me">Remember</label><br>
+
+
+                <input type="submit" id="_submit" name="_submit" value="Se Connecter" />
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+</center>
+</div>
+
+<style>
+    #username{
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #777;
+    padding: 0.5em 1em 0.5em 0;
+    border: 0;
+    width: 100%;
+    border-bottom: 1px solid #dcdcdc;
+    background: none;
+    -webkit-appearance: none;
+    outline: none;
+    }
+
+    #password{
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: #777;
+        padding: 0.5em 1em 0.5em 0;
+        border: 0;
+        width: 100%;
+        border-bottom: 1px solid #dcdcdc;
+        background: none;
+        -webkit-appearance: none;
+        outline: none;
+    }
+
+    #_submit{
+        border: none;
+        padding: 10px 40px 10px;
+        font-size: 14px;
+        outline: none;
+        text-transform: uppercase;
+        margin: 0 0 0 -4px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        background: #111;
+        color: #fff;
+    }
+
+    #_submit:hover{
+        background: #2fdab8;
+
+    }
+
+</style>

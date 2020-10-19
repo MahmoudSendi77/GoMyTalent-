@@ -1,0 +1,114 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="container-fluid modal-body-sub_agile">
+
+            <div class="row" style="margin: auto">
+                <div class="col-md-4 ">
+                </div>
+
+                <div class="col-md-4">
+
+                    <center>
+                    <h3 class="agileinfo_sign">
+
+                            <div style="color:#2fdab8  " >S'inscrire <span style="color: #0c0c0c">maintenant</span></div> </h3>
+                    </center>
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                    <div class="styled-input agile-styled-input-top">
+                        {{form_widget(form.nom)}}
+                        <label>Nom</label>
+                        <span></span>
+                    </div>
+                    <div class="styled-input agile-styled-input-top">
+                        {{form_widget(form.prenom)}}
+                        <label>Prenom</label>
+                        <span></span>
+                    </div>
+                    <div class="styled-input agile-styled-input-top">
+                        {{form_widget(form.email)}}
+                        <label>Email</label>
+                        <span></span>
+                    </div>
+                    <div class="styled-input agile-styled-input-top">
+                        {{form_widget(form.username)}}
+                        <label>Username</label>
+                        <span></span>
+                    </div>
+
+                    <div class="styled-input agile-styled-input-top">
+                        {{form_widget(form.plainPassword.first)}}
+                        <label>Mot de passe</label>
+                        <span></span>
+                    </div>
+                    <div class="styled-input agile-styled-input-top">
+                        {{form_widget(form.plainPassword.second)}}
+                        <label>Confirmer mot de passe</label>
+                        <span></span>
+                    </div>
+                    <div class="styled-input agile-styled-input-top">
+                        {{form_widget(form.roles, {'attr': {'class': 'form-control'}})}}
+                        <span></span>
+                    </div>
+
+
+
+                    <input type="submit" value="s'inscrire">
+                    {{ form_end(form) }}
+
+                    <div class="clearfix"></div>
+                    <p><a href="#"><div style="color:black" >En cliquant sur s'inscrire, j'accepte vos conditions</div></a></p>
+
+                </div>
+
+            </div>
+
+
+</div>
+
+<style>
+    input {
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: #777;
+        padding: 0.5em 1em 0.5em 0;
+        border: 0;
+        width: 100%;
+        border-bottom: 1px solid #dcdcdc;
+        background: none;
+        -webkit-appearance: none;
+        outline: none;
+    }
+
+
+    label {
+        color: #555 !important;
+
+    }
+
+
+    [type~="submit"] {
+        border: none;
+        padding: 10px 40px 10px;
+        font-size: 14px;
+        outline: none;
+        text-transform: uppercase;
+        margin: 0 0 0 -4px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        background: #111;
+        color: #fff;
+    }
+
+    [type~="submit"]:hover {
+        background: #2fdab8;
+
+    }
+    a:hover{
+        color: black;
+    }
+    a{
+        color: black;
+    }
+
+</style>
